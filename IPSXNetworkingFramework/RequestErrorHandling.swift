@@ -19,7 +19,7 @@ extension ResponseHandlingCapable {
         
         let requestType = request.requestType ?? ""
         
-        if statusCode == 200 && errorCode == "" {
+        if (statusCode == 200 || statusCode == 204) && errorCode == "" {
             
             print(NSDate(),"\(requestType)" + "Request succeeded")
             completion(nil, data)
@@ -68,7 +68,7 @@ public func errorString(forHttpResponse response: HTTPURLResponse) -> String {
     
     let statusCode = response.statusCode
     
-    if statusCode == 200 {
+    if statusCode == 200 || statusCode == 204 {
         return ""
     }
     else {
