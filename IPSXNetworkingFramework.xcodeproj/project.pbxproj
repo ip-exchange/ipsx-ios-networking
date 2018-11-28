@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A454518421AEFB040056865B /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A454518321AEFB040056865B /* Protocols.swift */; };
 		A4725F0021874F7100AA79B8 /* IPSXNetworkingFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4725EF621874F7100AA79B8 /* IPSXNetworkingFramework.framework */; };
 		A4725F0521874F7100AA79B8 /* IPSXNetworkingFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4725F0421874F7100AA79B8 /* IPSXNetworkingFrameworkTests.swift */; };
 		A4725F0721874F7100AA79B8 /* IPSXNetworkingFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A4725EF921874F7100AA79B8 /* IPSXNetworkingFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A454518321AEFB040056865B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		A4725EF621874F7100AA79B8 /* IPSXNetworkingFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IPSXNetworkingFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4725EF921874F7100AA79B8 /* IPSXNetworkingFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPSXNetworkingFramework.h; sourceTree = "<group>"; };
 		A4725EFA21874F7100AA79B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				A4725F112187507700AA79B8 /* ReachabilityManager.swift */,
 				A4725F152187507700AA79B8 /* SwiftyJSON.swift */,
 				A4725EFA21874F7100AA79B8 /* Info.plist */,
+				A454518321AEFB040056865B /* Protocols.swift */,
 			);
 			path = IPSXNetworkingFramework;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			files = (
 				A4725F172187507700AA79B8 /* ReachabilityManager.swift in Sources */,
 				A4725F162187507700AA79B8 /* RequestManager.swift in Sources */,
+				A454518421AEFB040056865B /* Protocols.swift in Sources */,
 				A4725F192187507700AA79B8 /* NSNotificationName+extensions.swift in Sources */,
 				A4725F1B2187507700AA79B8 /* SwiftyJSON.swift in Sources */,
 				A4725F182187507700AA79B8 /* RequestModel.swift in Sources */,

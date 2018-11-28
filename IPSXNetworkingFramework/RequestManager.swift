@@ -7,7 +7,7 @@
 //
 import Foundation
 
-public class RequestManager: NSObject, URLSessionDelegate, ResponseHandlingCapable {
+public class RequestManager: NSObject, URLSessionDelegate {
     
     public static let shared = RequestManager()
     private override init() {}
@@ -39,6 +39,12 @@ public class RequestManager: NSObject, URLSessionDelegate, ResponseHandlingCapab
                 }
             }).resume()
         }
+        else {
+            let error = RequestError.urlError
+            print("\n")
+            print(NSDate(), "Request type: \(request.requestType as Any)", "ERROR:",error, "\nError Description:",error.errorDescription as Any, "\n")
+            completion(error, nil)
+        }
     }
     
     fileprivate func createUrlRequest(request: Request)-> URLRequest? {
@@ -54,7 +60,7 @@ public class RequestManager: NSObject, URLSessionDelegate, ResponseHandlingCapab
             }
         }
         
-        if let url = URL(string: request.url) {
+        if let url = asQuery(urlString: request.url, filters: request.filters){
             
             urlRequest = URLRequest(url: url)
             urlRequest?.httpMethod = request.httpMethod
@@ -67,3 +73,8 @@ public class RequestManager: NSObject, URLSessionDelegate, ResponseHandlingCapab
         return urlRequest
     }
 }
+
+extension RequestManager: QueryStringConvertible {}
+extension RequestManager: ResponseHandlingCapable {}
+
+

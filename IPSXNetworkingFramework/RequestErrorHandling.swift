@@ -8,31 +8,6 @@
 
 import Foundation
 
-protocol ResponseHandlingCapable {
-    
-    func handleResponse(statusCode: Int, errorCode: String, request: Request, data: Data?, completion: @escaping (Error?, Data?)->Void)
-}
-
-extension ResponseHandlingCapable {
-    
-    func handleResponse(statusCode: Int, errorCode: String, request: Request, data: Data?, completion: @escaping (Error?, Data?)->Void) {
-        
-        let requestType = request.requestType ?? ""
-        
-        if (statusCode == 200 || statusCode == 204) && errorCode == "" {
-            
-            print(NSDate(),"\(requestType)" + "Request succeeded")
-            completion(nil, data)
-        }
-        else {
-            let error = RequestError.custom(statusCode, errorCode)
-            print("\n")
-            print(NSDate(), "Request type: \(requestType)", "ERROR:",error, "\nError Description:",error.localizedDescription, "\n")
-            completion(error, data)
-        }
-    }
-}
-
 public enum ServiceResult<T> {
     
     case success(T)
@@ -43,6 +18,7 @@ public enum RequestError: Error {
     
     case custom(Int, String)
     case noData
+    case urlError
     
     public var errorDescription: String? {
         
@@ -51,6 +27,9 @@ public enum RequestError: Error {
         case .noData:
             return "There was no data on the server response."
            
+        case .urlError:
+            return "Can't convert to URLRequest"
+            
         case .custom(let statusCode, let errorCode):
             return "Error status code: " + "\(statusCode)" + " and error code: " + "\(errorCode)"
         }
