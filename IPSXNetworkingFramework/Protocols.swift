@@ -46,14 +46,19 @@ public extension QueryStringConvertible {
         var url = urlString + "?"
         
         var queries: [URLQueryItem] = []
+        
         for (key, value) in filters {
-            queries.append(.init(name: key, value: "\(value)"))
+            if let valueString = value as? String {
+                queries.append(.init(name: key, value: valueString))
+            }
+            else {
+                queries.append(.init(name: key, value: "\(value)"))
+            }
         }
         
         guard var components = URLComponents(string: "") else {
             return URL(string: url)
         }
-        
         components.queryItems = queries
         url += components.percentEncodedQuery ?? ""
         return URL(string: url)
