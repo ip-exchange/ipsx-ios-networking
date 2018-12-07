@@ -43,9 +43,15 @@ public extension QueryStringConvertible {
     func asQuery(urlString: String, filters: [String: Any]?) -> URL? {
         
         guard let filters = filters else { return URL(string: urlString) }
-        var url = urlString + "?"
-        
+        var url = urlString
         var queries: [URLQueryItem] = []
+        
+        if urlString.contains("?") {
+            url += "&"
+        }
+        else {
+            url += "?"
+        }
         
         for (key, value) in filters {
             if let valueString = value as? String {
