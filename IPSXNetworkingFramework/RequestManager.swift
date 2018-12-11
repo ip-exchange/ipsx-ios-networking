@@ -29,7 +29,7 @@ public class RequestManager: NSObject, URLSessionDelegate {
             requestManager.session.dataTask(with: urlRequest , completionHandler: { data, response, error in
                 
                 if let error = error {
-                    completion(error, data)
+                    DispatchQueue.main.async { completion(error, data) }
                 }
                 else if let httpResponse = response as? HTTPURLResponse {
                     
@@ -43,7 +43,7 @@ public class RequestManager: NSObject, URLSessionDelegate {
             let error = RequestError.urlError
             print("\n")
             print(NSDate(), "Request type: \(request.requestType as Any)", "ERROR:",error, "\nError Description:",error.errorDescription as Any, "\n")
-            completion(error, nil)
+            DispatchQueue.main.async { completion(error, nil) }
         }
     }
     

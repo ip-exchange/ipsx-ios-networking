@@ -27,13 +27,14 @@ public extension ResponseHandlingCapable {
         if (statusCode == 200 || statusCode == 204) && errorCode == "" {
             
             print(NSDate(),"\(requestType)" + "Request succeeded")
-            completion(nil, data)
+            DispatchQueue.main.async { completion(nil, data) }
         }
         else {
+            
             let error = RequestError.custom(statusCode, errorCode)
             print("\n")
             print(NSDate(), "Request type: \(requestType)", "ERROR:",error, "\nError Description:",error.errorDescription as Any, "\n")
-            completion(error, data)
+            DispatchQueue.main.async { completion(error, data) }
         }
     }
 }
